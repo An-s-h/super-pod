@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -7,12 +7,22 @@ const Home = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const navigate = useNavigate(); // Initialize the useNavigate hook
 
+  useEffect(() => {
+    // Add the overflow-hidden class to the body
+    document.body.classList.add('overflow-hidden');
+
+    // Clean up the effect when the component is unmounted
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, []);
+
   const handleLoginRedirect = () => {
     navigate('/login'); // Redirect to the login page
   };
 
   return (
-    <div className='bg-gradient-to-r from-green-300 to-green-500 px-6 lg:px-12 lg:h-[91.1vh] h-screen flex flex-col items-center justify-center text-white'>
+    <div className='bg-gradient-to-r from-green-300 to-green-500 px-6 lg:px-12 h-screen flex flex-col items-center justify-center text-white'>
       <motion.div 
         className='w-full flex flex-col lg:flex-row items-center justify-between gap-4'
         initial={{ opacity: 0 }}
@@ -20,48 +30,48 @@ const Home = () => {
         transition={{ duration: 1.5 }}
       >
         <div className='lg:w-4/6 w-full text-center lg:text-left'>
-  <motion.h1 
-    className='lg:text-9xl md:text-6xl text-5xl font-extrabold tracking-tight leading-tight'
-    initial={{ y: -100 }}
-    animate={{ y: 0 }}
-    transition={{ duration: 1.2, type: 'spring', stiffness: 100 }}
-  >
-    Create & listen to 
-    <br />
-    <motion.span 
-      className='flex items-end justify-center lg:justify-start lg:mt-0 mt-4 text-yellow-300'
-      initial={{ scale: 0.8 }}
-      animate={{ scale: 1 }}
-      transition={{ duration: 1, type: 'spring', stiffness: 100 }}
-    >
-      p<span className='inline-block'>
-        <motion.img 
-          src="https://cdn-icons-png.flaticon.com/128/2113/2113324.png" 
-          alt="podcast icon" 
-          className='lg:h-24 mx-2 md:h-14 h-12'
-          animate={{ 
-            y: [0, -30, 0, 0, 0], 
-            rotate: [0, 15, -15, 15, 0],
-          }}
-          transition={{ 
-            duration: 2, 
-            repeat: Infinity, 
-            repeatType: 'loop',
-            ease: 'easeInOut',
-          }}
-          // Adjust bounce based on screen size
-          style={{
-            y: window.innerWidth < 768 ? [0, -30, 0, 0, 0] : [0, -50, 0, 0, 0],
-          }}
-        />
-      </span>dcast
-    </motion.span>
-  </motion.h1>
-</div>
+          <motion.h1 
+            className='lg:text-9xl md:text-6xl text-5xl font-extrabold tracking-tight leading-tight'
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1.2, type: 'spring', stiffness: 100 }}
+          >
+            Create & listen to 
+            <br />
+            <motion.span 
+              className='flex items-end justify-center lg:justify-start lg:mt-0 mt-4 text-yellow-300'
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 1, type: 'spring', stiffness: 100 }}
+            >
+              p<span className='inline-block'>
+                <motion.img 
+                  src="https://cdn-icons-png.flaticon.com/128/2113/2113324.png" 
+                  alt="podcast icon" 
+                  className='lg:h-24 mx-2 md:h-14 h-12'
+                  animate={{ 
+                    y: [0, -30, 0, 0, 0], 
+                    rotate: [0, 15, -15, 15, 0],
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity, 
+                    repeatType: 'loop',
+                    ease: 'easeInOut',
+                  }}
+                  // Adjust bounce based on screen size
+                  style={{
+                    y: window.innerWidth < 768 ? [0, -30, 0, 0, 0] : [0, -50, 0, 0, 0],
+                  }}
+                />
+              </span>dcast
+            </motion.span>
+          </motion.h1>
+        </div>
         
         <div className='lg:block hidden w-[14%]'>
           <motion.div 
-            className='py-4  border border-white font-semibold rounded-full text-center rotate-90'
+            className='py-4 border border-white font-semibold rounded-full text-center rotate-90'
             animate={{ rotate: [0, 0, -90, -90] }}
             transition={{ duration: 2, loop: Infinity, ease: 'easeInOut' }}
           >
