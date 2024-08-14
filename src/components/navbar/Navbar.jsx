@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <div className="sticky top-0 mx-auto bg-transparent h-17 font-inter z-50 text-black">
-      <div className="flex justify-between items-center h-full w-full py-4 px-4 md:px-10 backdrop-blur-md">
+      <div className="relative flex justify-between items-center h-full w-full py-4 px-4 md:px-10 backdrop-blur-md">
         {/* Logo Section */}
         <div className="flex items-center justify-start space-x-3">
           <Link to="/" className="flex items-center">
@@ -27,7 +27,7 @@ const Navbar = () => {
         </div>
 
         {/* Links Section (Desktop) */}
-        <div className="hidden md:flex justify-center items-center space-x-8">
+        <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 justify-center items-center space-x-8">
           <Link
             to="/"
             className="text-black hover:text-gray-500 transition duration-200 ease-in-out"
@@ -49,7 +49,7 @@ const Navbar = () => {
         </div>
 
         {/* Authentication Section (Desktop) */}
-        <div className="hidden md:flex justify-center items-center space-x-4">
+        <div className="hidden md:flex justify-end items-center space-x-4 ml-auto">
           {!isLoggedIn && (
             <>
               <Link
