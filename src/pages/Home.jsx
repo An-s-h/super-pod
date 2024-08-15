@@ -5,20 +5,24 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const navigate = useNavigate(); // Initialize the useNavigate hook
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Add the overflow-hidden class to the body
-    document.body.classList.add('overflow-hidden');
+    // Determine screen size and apply overflow style accordingly
+    if (window.innerWidth >= 768) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
 
-    // Clean up the effect when the component is unmounted
+    // Cleanup overflow-hidden class on component unmount
     return () => {
       document.body.classList.remove('overflow-hidden');
     };
   }, []);
 
   const handleLoginRedirect = () => {
-    navigate('/login'); // Redirect to the login page
+    navigate('/login');
   };
 
   return (
