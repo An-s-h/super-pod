@@ -49,7 +49,7 @@ const SignUp = () => {
                 alt="logo"
               />
               <h4 className="text-xl font-semibold text-gray-800">
-                Sign Up for Podcaster
+                Sign Up for Super-Pod
               </h4>
             </div>
 
