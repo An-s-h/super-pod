@@ -59,7 +59,7 @@ const SignUp = () => {
                     alt="logo"
                   />
                   <h4 className="text-xl font-semibold text-gray-800">
-                    Login to Podcaster
+                    Login to Super-Pod
                   </h4>
                 </div>
 
